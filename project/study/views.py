@@ -5,6 +5,7 @@ from rest_framework.response import Response
 from .models import Students, Scores
 from .serializers import StudentSerializer, ScoreSerializer, StudentBasicSerializer
 from rest_framework import status, viewsets
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
 from rest_framework.viewsets import ModelViewSet, ReadOnlyModelViewSet
 from .serializers import StudentBasicSerializer, ScoresBasicSerializer, StudentSerializer, ScoreSerializer
@@ -42,6 +43,7 @@ def StudentDetailBasicView(request, pk):
 class StudentView(viewsets.ModelViewSet):
     queryset = Students.objects.all()
     serializer_class = StudentSerializer
+    permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
         qs = super().get_queryset()

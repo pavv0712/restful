@@ -15,7 +15,12 @@ class StudentSerializer(ModelSerializer):
     
     class Meta:
         model = Students
-        fields = ['name', 'address', 'email', 'memo', 'reg_user']
+        fields = '__all__'
+    
+    def validate_phone(self, value):
+        result = re.match("[0-9]{3}-[0-9]{3}{4}-[0-9]{3}{4}", value)
+        raise ValidationError('전화번호 형식 입력요망')
+        return value
 
 # class StudentSerializer(ModelSerializer):
 #     class Meta:
@@ -48,11 +53,11 @@ class UserSerializer(ModelSerializer):
 #         model = Scores
 #         fields = ['name', 'math', 'english', 'science']
 
-class ScoreSerializer(ModelSerializer):
-    reg_date = serializers.DateField(format="%Y")
-    class Meta:
-        model = Scores
-        fields = '__all__'
+# class ScoreSerializer(ModelSerializer):
+#     reg_date = serializers.DateField(format="%Y")
+#     class Meta:
+#         model = Scores
+#         fields = '__all__'
 
 class ScoresBasicSerializer(Serializer):
     name = serializers.CharField()
@@ -80,12 +85,20 @@ class ScoreSerializer(ModelSerializer):
     class Meta:
         model = Scores
         fields = ['name','math','science','english','reg_user','username','email','phone_number']
+    def validate_math(self, math):
+        if not(0 < math < 100):
+            raise ValidationError('0-100사이 숫자')
+        return math
+     
+  
+
+    
     # def validate_name(self, value):
     #     #정규표현식, 숫자체크
     #     if len(value) < 3:
     #         raise ValidationError("3글자 이상 입력해주세요!")
     #     return value
-    def validate(self, value):
-        if len(value['name']) < 3:
-            raise ValidationError("3글자 이상 입력해주세요!")
-        return value
+    # def validate(self, value):
+    #     if len(value['name']) < 3:
+    #         raise ValidationError("3글자 이상 입력해주세요!")
+    #     return value
