@@ -12,6 +12,7 @@ function Fruit(){
     const change3 = () =>{
         setFruit('딸기')
     }
+    
 
     return(
         <div>
