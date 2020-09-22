@@ -1,7 +1,11 @@
 import React from 'react';
 import 'App.css';
 import 'antd/dist/antd.css';
-import FormTest from 'Formtest';
+// import FormTest from 'Formtest';
+// import Add from 'Add';
+// import Gugudan from 'Gugudan';
+// import InputBox from 'InputBox';
+import ContextApiText from 'ContextApiTest';
 
 
 // function Parents()
@@ -42,7 +46,7 @@ import FormTest from 'Formtest';
 function App() {
   return (
     <div>
-      <FormTest/>
+      <ContextApiText/>
     </div>
 )
 }
