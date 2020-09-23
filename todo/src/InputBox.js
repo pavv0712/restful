@@ -2,27 +2,31 @@ import React from 'react';
 
 export default function InputBox() {
     
-    todos = ['저녁먹기', '점심먹기', '공부하기']
-    
-    const[num, setNum] = React.useState()
+    const[list, setList] = React.useState([]);
+    const[text, setText] = React.useState('')
 
-    const onChange = (e) => {
-        setNum(e.target.value)
+    const click = () => {
+        setList([...list, text]);
+        setText("");
     }
-
-    const onClick = () => {
-        
+    const press = (e) =>{
+        if(e.key === 'Enter'){
+            click()
+    }}
+    const pressdelete = (index) => {
+        setList([...list.slice(0, index),
+                ...list.slice(idex + 1, list.length)]);
 
     }
-
-
     return (
         <>
-            <input value = {num} onChange = {onChange}></input>
-            <button onClick = {onClick}>추가</button>
-            <div>{todo}</div>
+            <input value = {text} onChange = {(e)=>setText(e.target.value)} onKeyPress={press}></input>
+            <button onClick = {click}>추가</button>
+            <div>{list}</div>
         </>
-    )
+    )    
+}
 
-    
+function pressdelete = (e) => {
+
 }

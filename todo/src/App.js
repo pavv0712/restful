@@ -5,7 +5,14 @@ import 'antd/dist/antd.css';
 // import Add from 'Add';
 // import Gugudan from 'Gugudan';
 // import InputBox from 'InputBox';
-import ContextApiText from 'ContextApiTest';
+// import ContextApiText from 'ContextApiTest';
+// import AxiosTest from 'AxiosTest';
+// import Gugudan from 'Gugudan';
+// import CssTest1 from 'CssTest1';
+// import RouterTest from 'RouterTest';
+// import Box from 'CssTest2';
+import InputBox from 'InputBox';
+
 
 
 // function Parents()
@@ -46,7 +53,7 @@ import ContextApiText from 'ContextApiTest';
 function App() {
   return (
     <div>
-      <ContextApiText/>
+      <InputBox/>
     </div>
 )
 }
